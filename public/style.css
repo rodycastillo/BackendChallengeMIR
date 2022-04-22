@@ -21,7 +21,7 @@ img {
 }
 @media (prefers-reduced-motion: no-preference) {
   img {
-    animation: spin infinite 4s linear;
+    animation: spin infinite 20s linear;
   }
 }
 @keyframes spin {

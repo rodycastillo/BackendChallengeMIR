@@ -6,7 +6,7 @@ const favsRouter = require("../controllers/favs");
 
 class Server {
   constructor() {
-    this.port = 8080;
+    this.port = process.env.PORT;
     this.app = express();
     this.middlewares();
     this.connectionDB();
