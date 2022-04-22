@@ -1,20 +1,31 @@
 const express = require("express");
 const cors = require("cors");
+const { connectDB } = require("../database/config");
+const userRouter = require("../controllers/user");
+const favsRouter = require("../controllers/favs");
 
 class Server {
   constructor() {
-    this.app = express();
     this.port = 8080;
+    this.app = express();
     this.middlewares();
-    this.router();
+    this.connectionDB();
+    this.routes();
   }
 
   middlewares() {
     this.app.use(cors());
+    this.app.use(express.json());
+    this.app.use(express.static("public"));
   }
 
-  router() {
-    this.app.use(express.static("public"));
+  async connectionDB() {
+    await connectDB();
+  }
+
+  routes() {
+    this.app.use("/auth/local/", userRouter);
+    this.app.use("/api/favs", favsRouter);
   }
 
   listen() {

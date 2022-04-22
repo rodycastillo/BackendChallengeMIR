@@ -2,20 +2,25 @@ const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema(
   {
-    _id: {
-      type: mongoose.SchemaTypes.ObjectId,
-      unique: true,
-    },
     email: {
       type: String,
       unique: true,
+      required: true,
     },
     password: {
       type: String,
+      required: true,
     },
-    favs: {
-      type: Object,
+    username: {
+      type: String,
+      required: true,
     },
+    favs: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Fav",
+      },
+    ],
   },
   { timestamps: true }
 );

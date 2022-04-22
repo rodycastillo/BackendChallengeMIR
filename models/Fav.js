@@ -2,18 +2,26 @@ const mongoose = require("mongoose");
 
 const FavSchema = new mongoose.Schema(
   {
-    _id: {
-      type: mongoose.SchemaTypes.ObjectId,
-      unique: true,
-    },
     title: {
       type: String,
+      required: true,
     },
     description: {
       type: String,
+      required: true,
     },
     link: {
       type: String,
+      required: true,
+    },
+    date: {
+      type: Date,
+      required: true,
+    },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
     },
   },
   { timestamps: true }
