@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.post("/", isAuthenticated, async (req, res) => {
   if (!req.body) {
-    return req
+    return res
       .statusCode(401)
       .json({ success: false, error: "Required FAV field is missing" });
   }
