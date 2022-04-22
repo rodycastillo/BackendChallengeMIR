@@ -20,7 +20,7 @@ img {
   width: 30rem;
 }
 @media (prefers-reduced-motion: no-preference) {
-  img:hover {
+  img {
     animation: spin infinite 4s linear;
   }
 }
