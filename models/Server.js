@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const logger = require('morgan')
 const { connectDB } = require("../database/config");
 const userRouter = require("../controllers/user");
 const favsRouter = require("../controllers/favs");
@@ -15,6 +16,7 @@ class Server {
 
   middlewares() {
     this.app.use(cors());
+    this.app.use(logger('tiny'));
     this.app.use(express.json());
     this.app.use(express.static("public"));
   }
